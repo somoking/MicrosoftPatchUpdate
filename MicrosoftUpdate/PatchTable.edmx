@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PatchMgrDevModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="PatchDetails">
+          <Key>
+            <PropertyRef Name="PatchID" />
+          </Key>
+          <Property Name="PatchID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatchNo" Type="varchar" MaxLength="500" />
+          <Property Name="PatchVersion" Type="varchar" MaxLength="250" />
+          <Property Name="CVE" Type="varchar" MaxLength="250" />
+          <Property Name="Title" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Severity" Type="varchar" MaxLength="50" />
+          <Property Name="Link" Type="varchar" MaxLength="999" />
+          <Property Name="AppID" Type="int" />
+          <Property Name="Pubdate" Type="datetime" Nullable="false" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
+          <Property Name="DeployedOn" Type="datetime" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdateDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsArchived" Type="bit" />
+          <Property Name="productsAffected" Type="varchar" MaxLength="1800" />
+        </EntityType>
+        <EntityContainer Name="PatchMgrDevModelStoreContainer">
+          <EntitySet Name="PatchDetails" EntityType="Self.PatchDetails" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PatchMgrDevModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="PatchDetail">
+          <Key>
+            <PropertyRef Name="PatchID" />
+          </Key>
+          <Property Name="PatchID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatchNo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PatchVersion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CVE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Severity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Link" Type="String" MaxLength="999" FixedLength="false" Unicode="false" />
+          <Property Name="AppID" Type="Int32" />
+          <Property Name="Pubdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
+          <Property Name="DeployedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsArchived" Type="Boolean" />
+          <Property Name="productsAffected" Type="String" MaxLength="1800" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="PatchMgrDevEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PatchDetails" EntityType="Self.PatchDetail" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PatchMgrDevModelStoreContainer" CdmEntityContainer="PatchMgrDevEntities">
+          <EntitySetMapping Name="PatchDetails">
+            <EntityTypeMapping TypeName="PatchMgrDevModel.PatchDetail">
+              <MappingFragment StoreEntitySet="PatchDetails">
+                <ScalarProperty Name="PatchID" ColumnName="PatchID" />
+                <ScalarProperty Name="PatchNo" ColumnName="PatchNo" />
+                <ScalarProperty Name="PatchVersion" ColumnName="PatchVersion" />
+                <ScalarProperty Name="CVE" ColumnName="CVE" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Severity" ColumnName="Severity" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="AppID" ColumnName="AppID" />
+                <ScalarProperty Name="Pubdate" ColumnName="Pubdate" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="DeployedOn" ColumnName="DeployedOn" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+                <ScalarProperty Name="productsAffected" ColumnName="productsAffected" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
